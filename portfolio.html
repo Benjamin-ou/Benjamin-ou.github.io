@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Benjamin Owusu – Business Operations &amp; Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F7; --grid:#DCE3EC; --ink:#14213D; --muted:#4F5D75; --surface:#FFFFFF;
+  --line:#C9D3E0; --accent:#2F5BFF; --accent-ink:#FFFFFF; --warm:#E8A400; --good:#1F8A70;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0F1624;--grid:#1A2438;--ink:#E8EEF8;--muted:#9AA8C0;--surface:#172033;--line:#2A3752;--accent:#6D8BFF;--accent-ink:#0F1624;--warm:#F2B72A;--good:#3CC1A0;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0F1624;--grid:#1A2438;--ink:#E8EEF8;--muted:#9AA8C0;--surface:#172033;--line:#2A3752;--accent:#6D8BFF;--accent-ink:#0F1624;--warm:#F2B72A;--good:#3CC1A0;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "IBM Plex Sans",system-ui,sans-serif;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;line-height:1.08;margin:0;letter-spacing:-.02em}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem;flex-wrap:wrap}
+nav .logo{font:800 1.15rem "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{color:var(--muted);text-decoration:none;font-weight:500}
+nav ul a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5rem;align-items:center;padding:3rem 0 4rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
+.hero p{max-width:34rem;color:var(--muted);margin:1.25rem 0 1.75rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.75rem 1.25rem;border-radius:6px;font-weight:500;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.1rem .9rem}
+.chart h2{font-size:1.05rem;letter-spacing:0}
+.chart .sub{color:var(--muted);font-size:.9rem;margin:.2rem 0 .8rem}
+.chart svg{width:100%;height:auto;display:block}
+.bar{fill:var(--line);transition:fill .15s}
+.bar.peak{fill:var(--accent)}
+.bar:hover,.bar.on{fill:var(--warm)}
+.axis{fill:var(--muted);font:11px "IBM Plex Sans",sans-serif}
+.readout{min-height:1.6em;font-weight:500;margin-top:.4rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.5rem}
+.lede{color:var(--muted);max-width:36rem;margin:0 0 2rem}
+.projects{display:grid;gap:1.25rem}
+.project{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:6px;padding:1.5rem;display:grid;grid-template-columns:1fr 1.4fr;gap:1.5rem}
+.project:nth-child(2){border-left-color:var(--warm)}
+.project:nth-child(3){border-left-color:var(--good)}
+.project h3{font-size:1.5rem;margin-bottom:.6rem}
+.tools{display:flex;gap:.4rem;flex-wrap:wrap;list-style:none;padding:0;margin:.8rem 0 0}
+.tools li{border:1px solid var(--line);border-radius:4px;padding:.1rem .55rem;font-size:.85rem;color:var(--muted)}
+.project dl{margin:0}
+.project dt{font-weight:500;margin-top:.6rem}
+.project dt:first-child{margin-top:0}
+.project dd{margin:.1rem 0 0;color:var(--muted)}
+.stats{list-style:none;margin:0;padding:0}
+.stats li{padding:.75rem 0;border-top:1px solid var(--line)}
+.stats li:first-child{border-top:0;padding-top:.2rem}
+.stats b{font:800 1.7rem "Bricolage Grotesque",sans-serif;margin-right:.5rem}
+.stats span{color:var(--muted)}
+.meter{height:8px;background:var(--line);border-radius:4px;margin-top:.45rem;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent);animation:grow 1.1s ease-out}
+@keyframes grow{from{width:0}}
+.meta{color:var(--muted);margin:0 0 .4rem;font-size:.95rem}
+.note{color:var(--muted);font-size:.85rem;margin:.9rem 0 0}
+@media (prefers-reduced-motion:reduce){.meter i{animation:none}}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.skills h3{font-size:1.15rem;margin-bottom:.5rem}
+.skills ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.about p{margin:0 0 1rem;max-width:34rem}
+footer{padding:2.5rem 0 3rem;border-top:1px solid var(--line);color:var(--muted)}
+.todo{background:var(--warm);color:#14213D;padding:.1rem .35rem;border-radius:3px;font-size:.9em}
+@media (max-width:760px){
+  .hero,.project,.about{grid-template-columns:1fr}
+  .hero{padding-top:1.5rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top">Benjamin Owusu</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>I turn operations and workforce data into decisions.</h1>
+      <p>I’m a business operations professional in Paris with experience in logistics, HR business partnering and management reporting. I’m building on that with SQL, Power BI and Tableau, and a master’s at CNAM.</p>
+      <div class="btns">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <figure class="chart" style="margin:0">
+      <h2>Results from my work</h2>
+      <p class="sub">Measured outcomes from my last two roles.</p>
+      <ul class="stats">
+        <li><b>40%</b><span>faster time-to-fill for new hires</span><div class="meter"><i style="width:40%"></i></div></li>
+        <li><b>95%</b><span>performance review completion, 100+ employees</span><div class="meter"><i style="width:95%"></i></div></li>
+        <li><b>30+</b><span>vacancies coordinated each year</span></li>
+        <li><b>100+</b><span>logistics and inventory records maintained</span></li>
+      </ul>
+    </figure>
+  </header>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Work</h2>
+    <p class="lede">Two roles, each with the same pattern: track the data, report it clearly, help a manager act on it.</p>
+    <div class="projects">
+      <article class="project">
+        <div>
+          <h3>Business Operations Intern</h3>
+          <p class="meta">Black Star Distribution, France · Jun – Nov 2026</p>
+          <ul class="tools"><li>Excel</li><li>Microsoft 365</li><li>NotebookLM</li></ul>
+        </div>
+        <dl>
+          <dt>Context</dt><dd>Moving parcels and goods between France and West Africa.</dd>
+          <dt>What I did</dt><dd>Tracked shipments, inventory and warehouse activity. Kept 100+ logistics records and wrote weekly and monthly Excel reports for management. Researched markets and logistics trends each month.</dd>
+          <dt>Result</dt><dd>Management used the reports to monitor performance. I worked with 5+ teams to fix workflow issues and kept 10+ clients updated.</dd>
+        </dl>
+      </article>
+      <article class="project">
+        <div>
+          <h3>HR Business Partner</h3>
+          <p class="meta">The Capital Group Ltd, Ghana · Aug 2023 – Sept 2025</p>
+          <ul class="tools"><li>Excel</li><li>ERP</li><li>HRIS</li></ul>
+        </div>
+        <dl>
+          <dt>Context</dt><dd>A company of 100+ employees that needed workforce planning tied to business goals.</dd>
+          <dt>What I did</dt><dd>Coordinated recruitment for 30+ vacancies a year. Tracked workforce and performance data in Excel and the ERP, and presented monthly and quarterly reports to management. Wrote policies and SOPs.</dd>
+          <dt>Result</dt><dd>Cut time-to-fill by 40% and reached a 95% review completion rate.</dd>
+        </dl>
+      </article>
+      <article class="project">
+        <div>
+          <h3>Your first analytics project</h3>
+          <p class="meta"><span class="todo">Add yours here</span></p>
+          <ul class="tools"><li>SQL</li><li>Power BI</li><li>DAX</li></ul>
+        </div>
+        <dl>
+          <dt>Question</dt><dd>Pick a question from your own field, such as what drives hiring speed or late shipments.</dd>
+          <dt>What I did</dt><dd>Use a public dataset, clean it, and build a Power BI dashboard.</dd>
+          <dt>Links</dt><dd><span class="todo">Dashboard link</span> · <span class="todo">GitHub link</span></dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="lede">What I use, and what I use it for.</p>
+    <div class="skills">
+      <div><h3>Analyze and report</h3><ul><li>Excel: pivot tables, Power Query, XLOOKUP</li><li>SQL</li><li>KPI monitoring and operational reporting</li></ul></div>
+      <div><h3>Visualize</h3><ul><li>Power BI and DAX</li><li>Tableau</li><li>Dashboard development</li></ul></div>
+      <div><h3>Operations and people</h3><ul><li>Workforce planning and recruitment</li><li>Inventory, procurement, logistics</li><li>Process improvement and SOPs</li></ul></div>
+      <div><h3>Credentials</h3><ul><li>Business Data Analytics (CBDA), IIBA: in progress</li><li>Business Process Management, Oct 2026</li><li>International Trade Fundamentals, Sept 2026</li><li>Operations and Supply Chain Management, Aug 2026</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2>About me</h2>
+    </div>
+    <div>
+      <p>I have 2+ years of experience across HR business partnering and business operations, in Ghana and France. I like the step where numbers become a clear recommendation a manager can act on.</p>
+      <p>I’m completing a Master’s in Management (International Business and Corporate Development) at CNAM in Paris, after a BA in Human Resource Management and Psychology at the University of Ghana. I work in English at a professional level.</p>
+      <p><strong>Available from December 2026.</strong> Based in Paris and willing to relocate.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="lede">Hiring, or want to talk about a role? Send me a message.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:benjaminowusu20@outlook.com">benjaminowusu20@outlook.com</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/benjamin-owusu-a26430356">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 Benjamin Owusu</div></footer>
+</body>
+</html>
